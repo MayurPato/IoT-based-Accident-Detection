@@ -14,7 +14,7 @@ const char *ssid = "pato";
 const char *password = "mayurpato";
  
 String Location = "Vellore, IN";
-String API_Key = "3cb8a92d31fb9654acfb62fddac587e4";
+String API_Key = " ";
 
 String air1,air2;
 
