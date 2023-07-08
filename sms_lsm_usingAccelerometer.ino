@@ -65,10 +65,6 @@ void loop()
 {
    sensors_event_t event; 
    accel.getEvent(&event);
-   //Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  ");
-   //Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  ");
-   //Serial.print("Z: "); Serial.print(event.acceleration.z); Serial.print("  ");
-   //Serial.println("m/s^2 ");
   sum = sqrt(sq(event.acceleration.x) + sq(event.acceleration.y) + sq(event.acceleration.z));
   diff = sum - diff;
   //Serial.println(sum);
@@ -91,10 +87,6 @@ void displayInfo()
     //gps_speed = gps.speed.kmph();
     //no_of_satellites = gps.satellites.value();
     //satellite_orientation = TinyGPSPlus::cardinal(gps.course.value());
-    //Serial.print("LAT:  ");
-    //Serial.println(latitude, 6);  
-    //Serial.print("LONG: ");
-    //Serial.println(longitude, 6);
   }
   if(sum > 28){
     Serial.println(sum);
@@ -104,9 +96,9 @@ void displayInfo()
     HTTPClient http;  
     String url = "http://maker.ifttt.com/trigger/LSM/with/key/jwzMImMUxfm2PytL-NJrgb3yVU0-YB-yWoXBFWnZsAo";
     url += "?value1=";
-    url += 79.159491;
+    url += longitude;
     url += "&value2=";
-    url += 12.970836;
+    url += latitude;
     http.begin(wiFiClient,url); 
     int httpCode = http.GET(); 
     
